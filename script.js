@@ -9,6 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    document.querySelectorAll('.cta-button').forEach(button => {
+        button.addEventListener('click', () => {
+            document.getElementById('waitlist').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
     waitlistForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
