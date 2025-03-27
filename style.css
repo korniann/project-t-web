@@ -9,6 +9,7 @@
     --accent-hover: #0056b3; /* Darker blue for hover */
     --border-color: #eeeeee; /* Lighter border color */
     --font-primary: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --font-heading: Georgia, 'Times New Roman', Times, serif; /* Added serif font for headings */
     --container-width: 1140px;
     --transition-speed: 0.25s ease-in-out;
     --section-padding: 5rem 0; /* Increased padding */
@@ -48,19 +49,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 3.25rem; /* Slightly larger */
-    font-weight: 700; /* Bolder */
+    font-family: var(--font-heading); /* Use serif font */
+    font-size: 3.5rem; /* Slightly larger */
+    font-weight: 500; /* Adjust weight for serif */
 }
 
 h2 {
-    font-size: 2.5rem; /* Slightly larger */
+    font-family: var(--font-heading); /* Use serif font */
+    font-size: 2.75rem; /* Slightly larger */
+    font-weight: 500; /* Adjust weight for serif */
     text-align: center;
     margin-bottom: 3rem; /* More space below section titles */
 }
 
 h3 {
-    font-size: 1.5rem; /* Adjusted size */
-    font-weight: 600;
+    font-size: 1.3rem; /* Adjusted size */
+    font-weight: 600; /* Keep sans-serif bold */
 }
 
 p {
@@ -251,51 +255,54 @@ section {
 
 .feature-item {
     background-color: var(--primary-bg); /* White cards */
-    padding: 2rem 1.75rem; /* Adjusted padding */
+    padding: 1.75rem; /* Adjusted padding */
     border-radius: 8px;
     border: 1px solid var(--border-color);
-    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    display: flex; /* Use flexbox for icon alignment */
-    flex-direction: column; /* Stack content vertically */
+    display: flex; /* Use flexbox for side-by-side layout */
+    align-items: flex-start; /* Align items to the top */
+    gap: 1.5rem; /* Space between icon and text */
+    /* Animation properties moved below */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out, box-shadow var(--transition-speed); /* Added box-shadow transition */
 }
 
 .feature-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06); /* Refined shadow */
+    /* transform: translateY(-4px); Removed transform on hover for simplicity */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06); /* Keep subtle shadow on hover */
 }
 
 .feature-item i {
-    font-size: 2rem; /* Slightly smaller icon */
+    font-size: 1.5rem; /* Adjusted icon size */
     color: var(--accent-color);
-    margin-bottom: 1.25rem; /* More space below icon */
-    width: 40px; /* Give icon a fixed width */
-    height: 40px; /* Give icon a fixed height */
-    line-height: 40px; /* Center icon vertically */
-    text-align: center; /* Center icon horizontally */
-    background-color: #e7f3ff; /* Light blue background for icon */
-    border-radius: 50%; /* Make icon background circular */
+    margin-top: 0.1rem; /* Align icon slightly better with text */
+    width: 36px; /* Fixed width */
+    height: 36px; /* Fixed height */
+    line-height: 36px; /* Center icon */
+    text-align: center;
+    background-color: #e7f3ff;
+    border-radius: 50%;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.feature-item .feature-text {
+    flex-grow: 1; /* Allow text content to take remaining space */
 }
 
 .feature-item h3 {
-    font-size: 1.2rem; /* Adjusted size */
-    margin-bottom: 0.75rem; /* Adjusted space */
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem; /* Less space below heading */
     color: var(--text-dark);
 }
 
 .feature-item p {
     font-size: 0.95rem;
-    color: var(--text-medium); /* Use medium text color */
+    color: var(--text-medium);
     margin-bottom: 0;
-    flex-grow: 1; /* Allow paragraph to fill space if needed */
 }
 
 /* Animation for Feature Items */
-.feature-item {
-    /* ... existing styles ... */
-    opacity: 0; /* Start hidden */
-    transform: translateY(20px); /* Start slightly lower */
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Smooth transition */
-}
+/* Properties are now directly on .feature-item */
 
 .feature-item.visible {
     opacity: 1; /* Fade in */
@@ -452,27 +459,61 @@ footer {
 }
 
 footer .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem; /* Space between elements */
+    display: grid; /* Use grid for columns */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive columns */
+    gap: 2rem; /* Gap between columns */
+    align-items: start; /* Align items to the top of each column */
+    text-align: left; /* Align text left */
 }
 
-footer p {
-    margin-bottom: 0; /* Remove default margin */
+.footer-column {
+    /* Styles for individual columns if needed */
+}
+
+.footer-column h4 { /* Style for column headings */
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-column a {
+    color: var(--text-medium);
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.footer-column a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    grid-column: 1 / -1; /* Make bottom span all columns */
+    margin-top: 2rem; /* Space above bottom text */
+    padding-top: 2rem; /* Space above bottom text */
+    border-top: 1px solid var(--border-color);
+    text-align: center; /* Center copyright */
+}
+
+footer p { /* Style for copyright */
+    margin-bottom: 0;
     color: var(--text-light);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
-footer nav a {
-    color: var(--text-medium); /* Medium text color for links */
-    margin: 0 0.75rem; /* More space between links */
-    font-size: 0.9rem;
-}
-
-footer nav a:hover {
-    color: var(--accent-color); /* Use accent color for hover */
-}
+/* Remove old footer nav styles */
+/* footer nav a { ... } */
 
 /* Responsive Design */
 @media (max-width: 992px) {
@@ -571,7 +612,47 @@ footer nav a:hover {
     }
 }
 
+@media (max-width: 768px) {
+    /* ... existing styles ... */
+    .feature-item {
+        /* Ensure side-by-side layout persists longer if desired, or adjust */
+    }
+    footer .container {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjust columns for smaller screens */
+        gap: 1.5rem;
+    }
+}
+
+
 @media (max-width: 576px) {
+    h1 {
+        font-size: 2.5rem; /* Adjust heading size */
+    }
+    h2 {
+        font-size: 2.1rem; /* Adjust heading size */
+    }
+    .feature-item {
+        flex-direction: column; /* Stack icon and text on smallest screens */
+        align-items: center; /* Center items when stacked */
+        text-align: center; /* Center text when stacked */
+        gap: 1rem;
+    }
+    .feature-item i {
+        margin-bottom: 1rem; /* Add space below icon when stacked */
+        margin-top: 0;
+    }
+    footer .container {
+        grid-template-columns: 1fr 1fr; /* Two columns on small screens */
+        text-align: center; /* Center text in columns */
+    }
+    .footer-column {
+        margin-bottom: 1rem;
+    }
+    .footer-bottom {
+        margin-top: 1rem;
+        padding-top: 1rem;
+    }
+
     :root {
         --section-padding: 3rem 0;
     }
