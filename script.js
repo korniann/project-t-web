@@ -119,4 +119,76 @@ document.addEventListener('DOMContentLoaded', function() {
         featureObserver.observe(item);
     });
 
+    // --- tsParticles Initialization ---
+    if (typeof tsParticles !== 'undefined') {
+        tsParticles.load("tsparticles", {
+            fpsLimit: 60,
+            particles: {
+                number: {
+                    value: 50, // Increased number
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: ["#9c9a9a", "#ffc107"] // Even darker grey and accent yellow
+                },
+                shape: {
+                    type: "circle"
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 0.6,
+                        opacity_min: 0.2,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3.5, // Increased size again
+                    random: true,
+                    anim: {
+                        enable: false,
+                    }
+                },
+                line_linked: {
+                    enable: false
+                },
+                move: {
+                    enable: true,
+                    speed: 0.5, // Slightly faster movement
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: false, // Disable hover effects
+                    },
+                    onclick: {
+                        enable: false, // Disable click effects
+                    },
+                    resize: true
+                },
+            },
+            retina_detect: true,
+            background: {
+                color: "transparent" // Ensure background is transparent
+            }
+        });
+    } else {
+        console.error("tsParticles library not loaded.");
+    }
+
 });
