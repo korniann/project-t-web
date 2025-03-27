@@ -1,15 +1,17 @@
 /* General Styles & Variables */
 :root {
-    --primary-bg: #f8f9fa; /* Light grey background */
-    --secondary-bg: #ffffff; /* White background for sections */
-    --text-dark: #212529; /* Dark text */
-    --text-light: #6c757d; /* Lighter text/subheadlines */
-    --accent-color: #ffc107; /* Yellow accent */
-    --accent-hover: #e0a800; /* Darker yellow for hover */
-    --border-color: #dee2e6; /* Light border color */
-    --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --primary-bg: #ffffff; /* White background */
+    --secondary-bg: #f7f7f7; /* Very light grey for subtle contrast */
+    --text-dark: #1a1a1a; /* Near black for strong text */
+    --text-medium: #555555; /* Medium grey for less emphasis */
+    --text-light: #888888; /* Lighter grey for subtle text */
+    --accent-color: #007bff; /* Changed to a modern blue */
+    --accent-hover: #0056b3; /* Darker blue for hover */
+    --border-color: #eeeeee; /* Lighter border color */
+    --font-primary: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     --container-width: 1140px;
-    --transition-speed: 0.3s ease;
+    --transition-speed: 0.25s ease-in-out;
+    --section-padding: 5rem 0; /* Increased padding */
 }
 
 * {
@@ -20,13 +22,16 @@
 
 html {
     scroll-behavior: smooth;
+    font-size: 16px; /* Base font size */
 }
 
 body {
     font-family: var(--font-primary);
-    line-height: 1.6;
-    color: var(--text-dark);
+    line-height: 1.7; /* Slightly increased line height */
+    color: var(--text-medium); /* Default text color */
     background-color: var(--primary-bg);
+    -webkit-font-smoothing: antialiased; /* Smoother fonts on WebKit */
+    -moz-osx-font-smoothing: grayscale; /* Smoother fonts on Firefox */
 }
 
 .container {
@@ -35,32 +40,32 @@ body {
     padding: 0 1.5rem;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6 {
     line-height: 1.3;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
     font-weight: 600;
+    color: var(--text-dark); /* Headings are dark */
 }
 
 h1 {
-    font-size: 3rem; /* Large, prominent */
-    color: var(--text-dark);
+    font-size: 3.25rem; /* Slightly larger */
+    font-weight: 700; /* Bolder */
 }
 
 h2 {
-    font-size: 2.25rem;
-    color: var(--text-dark);
+    font-size: 2.5rem; /* Slightly larger */
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem; /* More space below section titles */
 }
 
 h3 {
-    font-size: 1.5rem;
-    color: var(--text-dark);
+    font-size: 1.5rem; /* Adjusted size */
+    font-weight: 600;
 }
 
 p {
-    margin-bottom: 1rem;
-    color: var(--text-light);
+    margin-bottom: 1.25rem; /* More space between paragraphs */
+    color: var(--text-medium);
 }
 
 a {
@@ -74,15 +79,113 @@ a:hover {
 }
 
 section {
-    padding: 4rem 0;
+    padding: var(--section-padding);
+}
+
+/* Navigation Bar */
+.main-nav {
+    background-color: var(--primary-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+    position: sticky; /* Make nav sticky */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it stays on top */
+    transition: box-shadow var(--transition-speed);
+}
+
+.main-nav.scrolled { /* Style for when scrolled */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: var(--text-dark); /* Keep logo color consistent */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* Space between links */
+}
+
+.nav-links a {
+    color: var(--text-medium);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.5rem 0; /* Add padding for easier clicking */
+    position: relative;
+    text-decoration: none;
+}
+
+.nav-links a::after { /* Underline effect on hover */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width var(--transition-speed);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after { /* Active state can be added via JS */
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--text-dark); /* Darken link on hover */
+}
+
+.nav-cta {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.nav-cta:hover {
+    background-color: var(--accent-hover);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.nav-cta::after { /* Remove underline effect for CTA */
+    display: none;
+}
+
+.mobile-nav-toggle { /* Hamburger Icon */
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    cursor: pointer;
 }
 
 /* Header / Hero Section */
 .hero {
-    background-color: var(--secondary-bg);
+    padding-top: 7rem; /* Add padding top to account for sticky nav height */
+    background-color: var(--primary-bg); /* Match body background */
     text-align: center;
-    padding: 6rem 0 4rem;
-    border-bottom: 1px solid var(--border-color);
+    padding: 6rem 0 5rem; /* Adjusted padding */
+    /* border-bottom: 1px solid var(--border-color); Removed border for cleaner look */
 }
 
 .hero h1 {
@@ -90,36 +193,41 @@ section {
 }
 
 .hero h2 {
-    font-size: 1.5rem; /* Smaller subheadline */
-    color: var(--text-light);
+    font-size: 1.3rem; /* Adjusted size */
+    color: var(--text-medium); /* Use medium text color */
     font-weight: 400;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem; /* More space */
     text-align: center; /* Override default h2 alignment */
+    max-width: 750px; /* Limit width */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero p {
-    max-width: 700px;
-    margin: 0 auto 2rem;
-    color: var(--text-dark); /* Slightly darker for better readability */
+    max-width: 750px; /* Consistent width */
+    margin: 0 auto 2.5rem; /* More space below */
+    color: var(--text-medium); /* Use medium text color */
+    font-size: 1.1rem; /* Slightly larger paragraph */
 }
 
 .cta-button {
     display: inline-block;
     background-color: var(--accent-color);
-    color: var(--text-dark);
-    padding: 0.8rem 2rem;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    transition: background-color var(--transition-speed), transform var(--transition-speed);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #ffffff; /* White text on button */
+    padding: 0.9rem 2.2rem; /* Slightly larger padding */
+    border-radius: 6px; /* Slightly more rounded */
+    font-size: 1rem; /* Adjusted size */
+    font-weight: 500; /* Medium weight */
+    text-transform: none; /* Removed uppercase */
+    transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* More subtle shadow */
 }
 
 .cta-button:hover {
     background-color: var(--accent-hover);
-    color: var(--text-dark);
+    color: #ffffff;
     transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
 }
 
 .hero-graphic {
@@ -129,77 +237,115 @@ section {
 
 /* Features Section */
 .features-section {
-    background-color: var(--primary-bg);
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    text-align: center;
-}
-
-.feature-item {
-    background-color: var(--secondary-bg);
-    padding: 2rem;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-}
-
-.feature-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
-}
-
-.feature-item i {
-    font-size: 2.5rem;
-    color: var(--accent-color);
-    margin-bottom: 1rem;
-}
-
-.feature-item h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-}
-
-.feature-item p {
-    font-size: 0.95rem;
-    color: var(--text-light);
-    margin-bottom: 0;
-}
-
-/* Target Audience Section */
-.target-audience-section {
-    background-color: var(--secondary-bg);
+    background-color: var(--secondary-bg); /* Use light grey */
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
 }
 
-.audience-grid {
+.features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.5rem;
-    text-align: center;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly larger min width */
+    gap: 2.5rem; /* Increased gap */
+    text-align: left; /* Align text left within cards */
+}
+
+.feature-item {
+    background-color: var(--primary-bg); /* White cards */
+    padding: 2rem 1.75rem; /* Adjusted padding */
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    display: flex; /* Use flexbox for icon alignment */
+    flex-direction: column; /* Stack content vertically */
+}
+
+.feature-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06); /* Refined shadow */
+}
+
+.feature-item i {
+    font-size: 2rem; /* Slightly smaller icon */
+    color: var(--accent-color);
+    margin-bottom: 1.25rem; /* More space below icon */
+    width: 40px; /* Give icon a fixed width */
+    height: 40px; /* Give icon a fixed height */
+    line-height: 40px; /* Center icon vertically */
+    text-align: center; /* Center icon horizontally */
+    background-color: #e7f3ff; /* Light blue background for icon */
+    border-radius: 50%; /* Make icon background circular */
+}
+
+.feature-item h3 {
+    font-size: 1.2rem; /* Adjusted size */
+    margin-bottom: 0.75rem; /* Adjusted space */
+    color: var(--text-dark);
+}
+
+.feature-item p {
+    font-size: 0.95rem;
+    color: var(--text-medium); /* Use medium text color */
+    margin-bottom: 0;
+    flex-grow: 1; /* Allow paragraph to fill space if needed */
+}
+
+/* Animation for Feature Items */
+.feature-item {
+    /* ... existing styles ... */
+    opacity: 0; /* Start hidden */
+    transform: translateY(20px); /* Start slightly lower */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Smooth transition */
+}
+
+.feature-item.visible {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Move to original position */
+}
+
+
+/* Target Audience Section */
+.target-audience-section {
+    background-color: var(--primary-bg); /* White background */
+    /* border-top: 1px solid var(--border-color); */
+    /* border-bottom: 1px solid var(--border-color); */
+}
+
+.audience-grid {
+    display: flex; /* Use flexbox for wrapping */
+    flex-wrap: wrap;
+    gap: 1rem; /* Gap between items */
+    justify-content: center; /* Center items */
 }
 
 .audience-item {
-    background-color: var(--primary-bg);
-    padding: 1.5rem 1rem;
-    border-radius: 5px;
+    background-color: var(--secondary-bg); /* Light grey background */
+    padding: 0.6rem 1.2rem; /* Adjusted padding */
+    border-radius: 20px; /* Pill shape */
     border: 1px solid var(--border-color);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
 .audience-item p {
     font-weight: 500;
-    color: var(--text-dark);
+    color: var(--text-medium); /* Medium text color */
     margin-bottom: 0;
-    font-size: 1rem;
+    font-size: 0.95rem; /* Slightly smaller */
+}
+
+.audience-item:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #ffffff; /* White text on hover */
+}
+
+.audience-item:hover p {
+    color: #ffffff; /* Ensure paragraph text also changes color */
 }
 
 /* Waitlist Form Section */
 .waitlist-section {
-    background-color: var(--primary-bg);
+    background-color: var(--secondary-bg); /* Light grey background */
+    border-top: 1px solid var(--border-color);
 }
 
 .waitlist-section .container {
@@ -212,17 +358,17 @@ section {
 }
 
 .waitlist-section p {
-    margin-bottom: 2rem;
-    color: var(--text-light);
+    margin-bottom: 2.5rem; /* More space */
+    color: var(--text-medium);
 }
 
 #signup-form {
-    background-color: var(--secondary-bg);
+    background-color: var(--primary-bg); /* White form background */
     padding: 2.5rem;
     border-radius: 8px;
     border: 1px solid var(--border-color);
     text-align: left;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); /* Subtle shadow */
 }
 
 .form-group {
@@ -231,21 +377,23 @@ section {
 
 .form-group label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem; /* Slightly more space */
     font-weight: 500;
     color: var(--text-dark);
+    font-size: 0.9rem; /* Slightly smaller label */
 }
 
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group textarea {
     width: 100%;
-    padding: 0.8rem;
+    padding: 0.85rem 1rem; /* Adjusted padding */
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: 6px; /* Match button radius */
     font-size: 1rem;
     font-family: inherit;
-    transition: border-color var(--transition-speed);
+    background-color: #fff; /* Ensure white background */
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .form-group input[type="text"]:focus,
@@ -253,7 +401,7 @@ section {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.3);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15); /* Blue focus ring */
 }
 
 .form-group textarea {
@@ -266,108 +414,196 @@ section {
     width: 100%;
     padding: 0.9rem;
     background-color: var(--accent-color);
-    color: var(--text-dark);
+    color: #ffffff; /* White text */
     border: none;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    font-weight: 600;
+    border-radius: 6px; /* Match inputs */
+    font-size: 1rem; /* Match CTA button */
+    font-weight: 500; /* Match CTA button */
     cursor: pointer;
-    transition: background-color var(--transition-speed), transform var(--transition-speed);
-    text-transform: uppercase;
+    transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+    text-transform: none; /* Removed uppercase */
+    margin-top: 0.5rem; /* Add some space above button */
 }
 
 .submit-button:hover {
     background-color: var(--accent-hover);
-    transform: translateY(-1px);
+    transform: translateY(-2px); /* Consistent hover effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Consistent hover shadow */
 }
 
 #thank-you-message {
     margin-top: 1.5rem;
     padding: 1rem;
-    background-color: #e9f7ea; /* Light green background */
-    color: #155724; /* Dark green text */
-    border: 1px solid #c3e6cb; /* Green border */
-    border-radius: 4px;
+    background-color: #e7f3ff; /* Light blue background */
+    color: #004085; /* Dark blue text */
+    border: 1px solid #b8daff; /* Blue border */
+    border-radius: 6px;
     text-align: center;
 }
 
 /* Footer */
 footer {
-    background-color: #343a40; /* Dark footer */
-    color: var(--primary-bg);
+    background-color: var(--primary-bg); /* White background */
+    color: var(--text-light); /* Light text color */
     text-align: center;
-    padding: 2rem 0;
-    margin-top: 4rem;
+    padding: 3rem 0; /* Increased padding */
+    margin-top: var(--section-padding); /* Consistent spacing */
+    border-top: 1px solid var(--border-color);
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem; /* Space between elements */
 }
 
 footer p {
-    margin-bottom: 0.5rem;
-    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0; /* Remove default margin */
+    color: var(--text-light);
     font-size: 0.9rem;
 }
 
 footer nav a {
-    color: rgba(255, 255, 255, 0.9);
-    margin: 0 0.5rem;
+    color: var(--text-medium); /* Medium text color for links */
+    margin: 0 0.75rem; /* More space between links */
     font-size: 0.9rem;
 }
 
 footer nav a:hover {
-    color: var(--accent-color);
+    color: var(--accent-color); /* Use accent color for hover */
 }
 
 /* Responsive Design */
 @media (max-width: 992px) {
+    :root {
+        --section-padding: 4rem 0; /* Reduce padding */
+    }
     h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
     }
     h2 {
-        font-size: 2rem;
+        font-size: 2.2rem;
+        margin-bottom: 2.5rem;
     }
     .hero {
-        padding: 4rem 0 3rem;
+        padding: 5rem 0 4rem;
     }
 }
 
 @media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide desktop links */
+        position: absolute;
+        top: 100%; /* Position below nav bar */
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-bg);
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+        flex-direction: column;
+        align-items: stretch; /* Stretch links full width */
+        padding: 1rem 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    .nav-links.active {
+        display: flex; /* Show when active */
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block; /* Make links block level */
+        padding: 0.8rem 1.5rem;
+        width: 100%;
+    }
+
+     .nav-links a::after { /* Remove underline effect on mobile */
+        display: none;
+    }
+
+    .nav-cta {
+        display: block;
+        margin: 0.5rem 1.5rem; /* Add margin for spacing */
+        text-align: center;
+    }
+
+    .mobile-nav-toggle {
+        display: block; /* Show hamburger */
+    }
+
+    :root {
+        --section-padding: 3.5rem 0; /* Further reduce padding */
+    }
     h1 {
-        font-size: 2.2rem;
+        font-size: 2.4rem;
     }
     h2 {
-        font-size: 1.8rem;
+        font-size: 2rem;
+        margin-bottom: 2rem;
     }
-    section {
-        padding: 3rem 0;
+    .hero h2 {
+        font-size: 1.2rem;
     }
-    .features-grid,
+    .hero p {
+        font-size: 1rem;
+    }
+    .features-grid {
+        grid-template-columns: 1fr; /* Stack features earlier */
+        gap: 2rem;
+    }
     .audience-grid {
-        grid-template-columns: 1fr 1fr; /* 2 columns on tablets */
+        gap: 0.75rem; /* Reduce gap */
+    }
+    .audience-item {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
     }
     #signup-form {
         padding: 2rem;
     }
+    footer {
+        padding: 2.5rem 0;
+    }
 }
 
 @media (max-width: 576px) {
+    :root {
+        --section-padding: 3rem 0;
+    }
+    html {
+        font-size: 15px; /* Slightly smaller base font on small screens */
+    }
     h1 {
-        font-size: 2rem;
+        font-size: 2.1rem;
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+    .hero {
+        padding: 4rem 0 3rem;
     }
     .hero h2 {
-        font-size: 1.3rem;
-    }
-    .features-grid,
-    .audience-grid {
-        grid-template-columns: 1fr; /* 1 column on mobile */
+        font-size: 1.1rem;
     }
     .cta-button,
     .submit-button {
-        font-size: 1rem;
-        padding: 0.7rem 1.5rem;
+        font-size: 0.95rem;
+        padding: 0.8rem 1.8rem;
     }
     #signup-form {
         padding: 1.5rem;
     }
-    footer {
-        padding: 1.5rem 0;
+    footer nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    footer nav a {
+        margin: 0;
     }
 }

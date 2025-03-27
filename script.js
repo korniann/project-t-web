@@ -36,7 +36,55 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Smooth scroll for the "Join the Waitlist" button
+    // --- Navigation Logic ---
+    const nav = document.querySelector('.main-nav');
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    // Sticky Nav Shadow on Scroll
+    if (nav) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) { // Add shadow after scrolling down 50px
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    }
+
+    // Mobile Nav Toggle
+    if (mobileNavToggle && navLinks) {
+        mobileNavToggle.addEventListener('click', () => {
+            const isExpanded = mobileNavToggle.getAttribute('aria-expanded') === 'true';
+            mobileNavToggle.setAttribute('aria-expanded', !isExpanded);
+            navLinks.classList.toggle('active');
+
+            // Change icon based on state (optional, requires Font Awesome)
+            const icon = mobileNavToggle.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times'); // Assumes you have fa-times icon available
+            }
+        });
+
+        // Close mobile nav when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    mobileNavToggle.setAttribute('aria-expanded', 'false');
+                    navLinks.classList.remove('active');
+                    const icon = mobileNavToggle.querySelector('i');
+                     if (icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            });
+        });
+    }
+
+    // --- Smooth Scroll Logic ---
+    // Smooth scroll for the main CTA button
     const ctaButton = document.querySelector('.cta-button');
     const waitlistSection = document.getElementById('waitlist-form');
 
@@ -46,4 +94,29 @@ document.addEventListener('DOMContentLoaded', function() {
             waitlistSection.scrollIntoView({ behavior: 'smooth' });
         });
     }
+
+    // --- Intersection Observer for Animations ---
+    const featureItems = document.querySelectorAll('.feature-item');
+
+    const observerOptions = {
+        root: null, // Use the viewport as the root
+        rootMargin: '0px',
+        threshold: 0.1 // Trigger when 10% of the item is visible
+    };
+
+    const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Stop observing once visible
+            }
+        });
+    };
+
+    const featureObserver = new IntersectionObserver(observerCallback, observerOptions);
+
+    featureItems.forEach(item => {
+        featureObserver.observe(item);
+    });
+
 });
