@@ -119,76 +119,86 @@ document.addEventListener('DOMContentLoaded', function() {
         featureObserver.observe(item);
     });
 
-    // --- tsParticles Initialization ---
-    if (typeof tsParticles !== 'undefined') {
-        tsParticles.load("tsparticles", {
-            fpsLimit: 60,
-            particles: {
-                number: {
-                    value: 50, // Increased number
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                color: {
-                    value: ["#9c9a9a", "#ffc107"] // Even darker grey and accent yellow
-                },
-                shape: {
-                    type: "circle"
-                },
-                opacity: {
-                    value: 0.5,
-                    random: true,
-                    anim: {
-                        enable: true,
-                        speed: 0.6,
-                        opacity_min: 0.2,
-                        sync: false
-                    }
-                },
-                size: {
-                    value: 3.5, // Increased size again
-                    random: true,
-                    anim: {
-                        enable: false,
-                    }
-                },
-                line_linked: {
-                    enable: false
-                },
-                move: {
-                    enable: true,
-                    speed: 0.5, // Slightly faster movement
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false,
-                    attract: {
-                        enable: false,
+    // --- Dynamic Background Canvas Animation ---
+    const canvas = document.getElementById('dynamic-background-canvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let animationFrameId;
+
+        // Shape settings
+        const numShapes = 18; // Number of concentric shapes
+        const pointsPerShape = 120; // Smoothness of the shape
+        const baseRadiusMultiplier = 0.45; // 0.3 is nice, as well. Increased base radius relative to min canvas dimension
+        const radiusStep = 20; // Increased radius step for larger spread
+        const amplitude = 100; // Slightly increased max radial distortion
+        const frequency = 4; // How many waves around the circle
+        const speed = 0.003; // How fast the waves move/evolve
+        const rotationSpeed = 0.00015; // Slow rotation of the whole pattern
+        const lineColor = 'rgb(158, 155, 155)'; 
+
+        let time = 0;
+
+        function resizeCanvas() {
+            // Use scrollWidth/scrollHeight to cover the entire page content area
+            canvas.width = document.documentElement.scrollWidth; 
+            canvas.height = document.documentElement.scrollHeight; 
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            time += 1; // Increment time for animation evolution
+
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 4;
+            const minDimension = Math.min(canvas.width, canvas.height);
+
+            for (let j = 0; j < numShapes; j++) {
+                const baseRadius = minDimension * baseRadiusMultiplier + j * radiusStep;
+
+                // Removed color variation per line for simplicity and max contrast
+                ctx.strokeStyle = lineColor; 
+                ctx.lineWidth = 1.5; // Keep lines relatively thick
+                ctx.beginPath();
+
+                for (let i = 0; i <= pointsPerShape; i++) { // Loop to pointsPerShape to close path
+                    const pointAngle = (Math.PI * 2 / pointsPerShape) * i;
+                    const currentAngle = pointAngle + time * rotationSpeed; // Add overall rotation
+
+                    // Calculate distortion based on angle, time, and shape index
+                    // Combine multiple sine waves for more organic movement
+                    const distortion1 = Math.sin(currentAngle * frequency + time * speed + j * 0.15) * amplitude;
+                    const distortion2 = Math.sin(currentAngle * (frequency/2) - time * speed * 0.7 + j * 0.1) * amplitude * 0.5;
+                    const distortedRadius = baseRadius + distortion1 + distortion2;
+
+
+                    const x = centerX + distortedRadius * Math.cos(currentAngle);
+                    const y = centerY + distortedRadius * Math.sin(currentAngle);
+
+                    if (i === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
                     }
                 }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: {
-                        enable: false, // Disable hover effects
-                    },
-                    onclick: {
-                        enable: false, // Disable click effects
-                    },
-                    resize: true
-                },
-            },
-            retina_detect: true,
-            background: {
-                color: "transparent" // Ensure background is transparent
+                // ctx.closePath(); // Connects last point to first - uncomment if needed, but looping i <= pointsPerShape often suffices
+                ctx.stroke();
             }
-        });
+
+            animationFrameId = requestAnimationFrame(draw);
+        }
+
+        // Initial setup
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Start animation
+        // Cancel any previous frame to avoid duplicates if script reloads/hotswaps
+        if (typeof animationFrameId !== 'undefined' && animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+        }
+        draw();
     } else {
-        console.error("tsParticles library not loaded.");
+        console.error("Canvas element #dynamic-background-canvas not found.");
     }
 
 });

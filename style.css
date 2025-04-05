@@ -199,18 +199,20 @@ section {
     /* border-bottom: 1px solid var(--border-color); Removed border for cleaner look */
 }
 
-#tsparticles { /* Style for the particle container */
-    position: absolute;
+/* Dynamic Background Canvas Styles */
+#dynamic-background-canvas {
+    position: absolute; 
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0; /* Behind hero content */
+    z-index: 1; /* Position behind relative content, above body bg */
+    pointer-events: none; /* Allow clicks to pass through */
+    opacity: 0.15; /* Reduced opacity again for subtlety */
 }
+/* End Dynamic Background Canvas Styles */
 
-.hero .container { /* Ensure hero content is above particles */
+.hero .container { /* Ensure hero content is above the background graphic */
     position: relative;
-    z-index: 1;
+    z-index: 1; /* Keep hero content above potential background elements */
 }
 
 .hero h1 {
@@ -326,6 +328,8 @@ section {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly larger min width */
     gap: 2.5rem; /* Increased gap */
     text-align: left; /* Align text left within cards */
+    position: relative;
+    z-index: 1;
 }
 
 .feature-item {
@@ -339,6 +343,8 @@ section {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.5s ease-out, transform 0.5s ease-out, box-shadow var(--transition-speed);
+    position: relative;
+    z-index: 1;
 }
 
 .feature-item:hover {
