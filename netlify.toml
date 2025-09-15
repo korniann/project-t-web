@@ -1,0 +1,14 @@
+# This file provides explicit instructions for Netlify
+
+[build]
+  # This tells Netlify where your website files are. 
+  # "." means the current directory.
+  publish = "."
+  
+  # This tells Netlify where your serverless functions are located.
+  functions = "netlify/functions"
+
+[dev]
+  # This mirrors the build settings for the local 'netlify dev' command
+  publish = "."
+  functions = "netlify/functions"

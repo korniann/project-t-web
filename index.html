@@ -3,209 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NodeCanvas AI - Visualize Your Insights</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- For icons -->
+    <title>Mindstax - An AI Workspace That Thinks Like You Do</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <canvas id="dynamic-background-canvas"></canvas> <!-- Moved Canvas to body start -->
+    <div id="particles-js"></div>
 
-    <nav class="main-nav">
-        <div class="container nav-container">
-            <a href="#" class="logo">NodeCanvas AI</a>
-            <ul class="nav-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#target-audience">Use Cases</a></li>
-                <li><a href="#waitlist-form" class="nav-cta">Join Waitlist</a></li>
-            </ul>
-            <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </nav>
-
-    <header class="hero">
-        <!-- Removed Canvas from here -->
+    <header class="site-header">
         <div class="container">
-            <h1>Visualize Your Insights with NodeCanvas AI</h1>
-            <h2>The first visual AI platform for non-linear document analysis.</h2>
-            <p>NodeCanvas AI transforms how you understand complex documents. Upload your PDFs, connect ideas visually on an infinite canvas, and extract insights in a way that mirrors your natural thought process.</p>
-            <a href="#waitlist-form" class="cta-button"><span>Join the Waitlist</span></a>
-            <!-- Removed placeholder graphic -->
-            <div class="hero-graphic">
-                <!-- Area for potential future graphic or animation -->
-            </div>
+            <nav class="main-nav">
+                <div class="logo">Mindstax</div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#why">Why Mindstax?</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#cta-section" class="nav-cta">Sign Up</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <section class="company-banner">
-        <div class="container">
-            <p class="banner-text">Used by professionals from</p>
-            <div class="logo-placeholders">
-                <!-- Placeholder divs for logos -->
-                <div class="logo-placeholder">Logo</div>
-                <div class="logo-placeholder">Logo</div>
-                <div class="logo-placeholder">Logo</div>
-                <div class="logo-placeholder">Logo</div>
-                <div class="logo-placeholder">Logo</div>
-            </div>
-        </div>
-    </section>
+    <main>
+        <section class="hero">
+            <div class="container-fluid">
+                <!-- New grid container for the two columns -->
+                <div class="hero-grid">
 
-    <section id="features" class="features-section">
-        <div class="container">
-            <h2>Key Features</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-item-image-placeholder"></div> <!-- Image Placeholder -->
-                    <div class="feature-content"> <!-- Wrapper for icon and text -->
-                        <i class="fas fa-project-diagram"></i>
-                        <div class="feature-text">
-                            <h3>Visual Canvas</h3>
-                            <p>Explore your documents on an infinite, node-based canvas.</p>
-                        </div>
+                    <!-- Column 1: Text Content -->
+                    <div class="hero-left">
+                        <h1>Finally, an AI Workspace that thinks like you do.</h1>
+                        <p class="subtitle">Stop losing your best ideas in a messy chat thread. Mindstax is the visual canvas that connects your thoughts, remembers everything, and helps you create something truly new.</p>
+                        <form class="waitlist-form" id="hero-form"> <!-- ADDED ID -->
+                            <input type="email" placeholder="Enter your email" required>
+                            <button type="submit">Join the Free Waitlist</button>
+                        </form>
+                        <div class="form-message"></div> <!-- ADDED FOR MESSAGES -->
+                        <p class="form-note">No spam, ever. Be the first to get access.</p>
                     </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-item-image-placeholder"></div> <!-- Image Placeholder -->
-                     <div class="feature-content">
-                        <i class="fas fa-brain"></i>
-                        <div class="feature-text">
-                            <h3>AI-Powered Analysis</h3>
-                            <p>Ask questions and get AI-generated answers directly on the canvas.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-item-image-placeholder"></div> <!-- Image Placeholder -->
-                     <div class="feature-content">
-                        <i class="fas fa-share-alt"></i>
-                        <div class="feature-text">
-                            <h3>Non-Linear Thinking</h3>
-                            <p>Connect ideas and build knowledge maps without constraints.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-item-image-placeholder"></div> <!-- Image Placeholder -->
-                     <div class="feature-content">
-                        <i class="fas fa-file-alt"></i>
-                        <div class="feature-text">
-                            <h3>Document Support</h3>
-                            <p>Upload and analyze PDFs and Word documents.</p>
-                        </div>
-                    </div>
-                </div>
-                 <div class="feature-item">
-                    <div class="feature-item-image-placeholder"></div> <!-- Image Placeholder -->
-                     <div class="feature-content">
-                        <i class="fas fa-save"></i>
-                        <div class="feature-text">
-                            <h3>Board Management</h3>
-                            <p>Save and load your canvas layouts and node configurations.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="section-cta"> <!-- Container for the new CTA -->
-                <a href="#waitlist-form" class="cta-button-secondary"><span>Learn More & Join Waitlist</span></a>
-            </div>
-        </div>
-    </section>
 
-    <section id="testimonials" class="testimonials-section"> <!-- Renamed ID and class -->
-        <div class="container">
-            <h2>What Our Users Say</h2> <!-- Updated heading -->
-            <div class="testimonial-grid"> <!-- New grid class -->
-                <div class="testimonial-item">
-                    <blockquote>
-                        "NodeCanvas AI completely changed how I approach research. The visual connections make complex topics so much easier to grasp."
-                    </blockquote>
-                    <cite>— Dr. Evelyn Reed, Research Scientist</cite>
-                </div>
-                <div class="testimonial-item">
-                    <blockquote>
-                        "As a content creator, mapping out ideas visually is crucial. NodeCanvas AI is intuitive and powerful for brainstorming and structuring content."
-                    </blockquote>
-                    <cite>— Marcus Chen, Digital Content Creator</cite>
-                </div>
-                <div class="testimonial-item">
-                    <blockquote>
-                        "Finally, a tool that thinks like I do! The non-linear canvas is perfect for my neurodivergent brain. Highly recommended."
-                    </blockquote>
-                    <cite>— Samira Khan, UX Designer</cite>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <!-- Column 2: Image Placeholder -->
+                    <div class="hero-right">
+                        <div class="image-placeholder">
+                            <img src="screenshot.png" alt="Mindstax screenshot">
+                        </div>
+                    </div>
 
-    <section id="waitlist-form" class="waitlist-section">
-        <div class="container">
-            <h2>Join the Waitlist</h2>
-            <p>Be the first to experience the future of document analysis. Sign up to get early access and exclusive updates.</p>
-            <form id="signup-form" class="horizontal-form"> <!-- Added class for horizontal layout -->
-                <div class="form-group form-group-name">
-                    <label for="name" class="sr-only">Name</label> <!-- Screen-reader only label -->
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
                 </div>
-                <div class="form-group form-group-email">
-                    <label for="email" class="sr-only">Email</label> <!-- Screen-reader only label -->
-                    <input type="email" id="email" name="email" placeholder="Your Email Address" required>
-                </div>
-                <!-- Removed Use Case Field -->
-                <button type="submit" class="submit-button"><span>Join Now</span></button> <!-- Wrapped text in span -->
-            </form>
-            <div id="thank-you-message" style="display: none; margin-top: 1rem; color: #004085; font-weight: bold;"> <!-- Updated color to match CSS -->
-                Thank you for joining the waitlist! We'll be in touch soon.
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer>
-        <div class="container footer-grid"> <!-- Added class -->
-            <div class="footer-logo-column"> <!-- New column for logo -->
-                <div class="footer-logo-placeholder">NodeCanvas AI</div> <!-- Logo Placeholder -->
-                <!-- Optional: Add short description or social icons here -->
+        <section class="video"> 
+            <video autoplay muted loop playsinline> 
+                <source src="MindstaxDemo1.webm" type="video/webm">
+                <source src="MindstaxDemo1.mp4" type="video/mp4">
+                Your browser does not support the video.
+            </video>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container-fluid">
+                <!-- We use a new 'features-grid' container for the two columns -->
+                <div class="features-grid">
+                    
+                    <!-- Column 1: The Heading -->
+                    <div class="features-left">
+                        <h2>Go from Information to Insight, Effortlessly.</h2>
+                    </div>
+
+                    <!-- Column 2: The Feature Items -->
+                    <div class="features-right">
+                        <div class="feature-item">
+                            <h3>Build a living mind map, not a dead-end chat.</h3>
+                            <p>Tired of the endless scroll? Mindstax gives your ideas room to breathe. On our infinite canvas, you can map out every angle of your project, see the big picture, and discover connections you'd miss in a linear chat.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h3>Give your AI a perfect memory.</h3>
+                            <p>This is our superpower. Just connect your ideas, and Mindstax automatically builds the context for the AI. No more re-explaining yourself or endlessly copy-pasting. It just knows.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h3>Think in more than just text.</h3>
+                            <p>Your projects aren't just text, so why should your AI be? Drop in images, documents, and notes. Mindstax combines them into rich, multimodal prompts, unlocking a new level of creative and analytical power.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h3>Find the right brain for the job.</h3>
+                            <p>Different tasks require different expertise. With Mindstax Pro, you can instantly switch between powerful AI models optimized for your specific task, ensuring you get the highest quality result every single time.</p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <div class="footer-column">
-                <h4>Product</h4>
-                <ul>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#target-audience">Use Cases</a></li>
-                    <!-- Add more product links if needed -->
-                </ul>
+        </section>
+
+        <section id="cta-section" class="cta-section">
+            <div class="container">
+                <h2>Ready to untangle your thoughts?</h2>
+                <p>Join our waitlist to be the first to experience a smarter, more visual way to collaborate with AI. Early members will get free access and a special launch-day offer.</p>
+                <form class="waitlist-form" id="cta-form"> <!-- ADDED ID -->
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Join the Free Waitlist</button>
+                </form>
+                <div class="form-message"></div> <!-- ADDED FOR MESSAGES -->
+                 <p class="form-note">No spam, ever. Be the first to get access.</p>
             </div>
-            <div class="footer-column">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
+        </section>
+
+        <section id="why" class="why-mindstax">
+            <div class="container">
+                <h2>Our core beliefs</h2>
+                    <div class="why-grid">
+                        <div class="why-item">
+                            <!-- The container for the background -->
+                            <div class="why-icon">
+                                <!-- UPDATED: "workflow" icon SVG -->
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
+                                    <rect width="8" height="8" x="3" y="3" rx="2"></rect>
+                                    <path d="M7 11v4a2 2 0 0 0 2 2h4"></path>
+                                    <rect width="8" height="8" x="13" y="13" rx="2"></rect>
+                                </svg>
+                            </div>
+                            <h3>Think spatially, not linearly.</h3>
+                            <p>Linear chats bury great ideas. Your brain thinks in webs of connections. We built an infinite canvas that works the way your mind does, giving your thoughts the space they deserve.</p>
+                        </div>
+                        <div class="why-item">
+                            <div class="why-icon">
+                                <!-- UPDATED: "brain" icon SVG -->
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
+                                    <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.24-1.61V11A2.5 2.5 0 0 1 6.5 8.5h0A2.5 2.5 0 0 1 9 6V5A2.5 2.5 0 0 1 9.5 2Z"></path>
+                                    <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .24-1.61V11A2.5 2.5 0 0 0 17.5 8.5h0A2.5 2.5 0 0 0 15 6V5A2.5 2.5 0 0 0 14.5 2Z"></path>
+                                </svg>
+                            </div>
+                            <h3>Memory should be effortless.</h3>
+                            <p>We're obsessed with solving AI's memory problem. By connecting your ideas, you build a perfect context for the AI, automatically. No more copy-pasting. Ever.</p>
+                        </div>
+                        <div class="why-item">
+                            <!-- This icon remains unchanged -->
+                            <div class="why-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
+                                    <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <path d="M3 15h6"></path><path d="M6 12v6"></path>
+                                </svg>
+                            </div>
+                            <h3>Create, don't just converse.</h3>
+                            <p>A conversation is fleeting. A creation is forever. Mindstax is a synthesis engine, designed to help you transform scattered information into a finished strategy, story, or solution.</p>
+                        </div>
+                    </div>
             </div>
-            <div class="footer-column">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Documentation</a></li>
-                </ul>
+        </section>
+
+        <section class="use-cases">
+            <div class="container">
+                <h2>What will you create?</h2>
+                <div class="use-case-grid">
+                    <div class="use-case-item">
+                        <h3>The perfect essay outline</h3>
+                        <p>Drop in your research papers, highlight key quotes on sticky notes, and ask the AI to structure a powerful, coherent argument with all your sources perfectly integrated.</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h3>A rich, living world</h3>
+                        <p>Build your story's universe visually. Add character images, define magic system rules, and generate consistent lore, dialogue, and plot points that never contradict each other.</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h3>The ultimate vacation plan</h3>
+                        <p>Pin images of destinations, add notes about your budget, and connect it all to have the AI generate a detailed, personalized itinerary complete with packing lists and activity suggestions.</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h3>Your life, organized</h3>
+                        <p>From creating a weekly meal plan based on your dietary needs to outlining a home renovation project, use Mindstax as your visual sounding board to think through any problem, big or small.</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h3>Your next big idea</h3>
+                        <p>Map out market trends, competitor analysis, and user feedback. Use the big-picture view to identify a unique opportunity and generate a full business plan or marketing strategy.</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h3>Your next feature</h3>
+                        <p>Map out user flows and system logic with nodes and connectors. Then, feed your entire diagram to the AI to instantly generate technical specifications, user stories, and even boilerplate code.</p>
+                    </div>
+                </div>
             </div>
-            <div class="footer-column">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
+        </section>
+
+        <section id="faq" class="faq">
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <details>
+                        <summary>Who is Mindstax for?</summary>
+                        <p>Mindstax is for anyone who uses AI for complex tasks—students organizing research, writers building worlds, marketers developing strategies, developers architecting systems, and anyone who feels they've hit the limits of a simple chat window.</p>
+                    </details>
+                </div>
+                <div class="faq-item">
+                    <details>
+                        <summary>How is this different from just using a chatbot?</summary>
+                        <p>Other LLM chatbots are conversational partners, but they have a bad memory and no organizational tools. Mindstax is a full workspace. It turns your conversations into a visual map that the AI can read and understand, eliminating the need to ever repeat yourself and allowing you to build much more complex ideas.</p>
+                    </details>
+                </div>
+                <div class="faq-item">
+                    <details>
+                        <summary>Is this another mind mapping tool?</summary>
+                        <p>While it's visual like mind mapping tools, the key difference is that the map is alive. In other tools, the map is just for you. In Mindstax, the connections you draw actively and automatically build the context for the AI. Your visual structure becomes the AI's brain.</p>
+                    </details>
+                </div>
+                 <div class="faq-item">
+                    <details>
+                        <summary>What will the pricing be like?</summary>
+                        <p>We will have a generous Free plan that is perfect for everyday use and brainstorming. For professionals and power users who need unlimited boards, advanced nodes (like Google Drive), and access to the most powerful AI models, we will offer a Pro subscription. By joining the waitlist, you'll be eligible for a significant discount on the Pro plan when we launch.</p>
+                    </details>
+                </div>
             </div>
-            <div class="footer-bottom">
-                 <p>&copy; 2025 NodeCanvas AI. All rights reserved.</p>
-                 <!-- Optional: Add social media icons here -->
+        </section>
+
+    </main>
+
+    <footer class="site-footer-bottom">
+        <div class="container">
+            <div class="footer-grid">
+                <!--<div class="footer-column">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Updates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#">Twitter / X</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                    </ul>
+                </div>-->
+            </div>
+            <div class="footer-bottom-text">
+                <p>&copy; 2025 Mindstax. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
-    <!-- Removed tsParticles library -->
+<!-- tsParticles library from a CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    <!-- Your custom configuration file -->
+    <script src="js/particles-config.js"></script>
+
+    <script src="js/mailerlite.js"></script> 
+
 </body>
 </html>

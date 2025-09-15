@@ -1,0 +1,466 @@
+/* --- CSS Variables and General Setup --- */
+:root {
+    --color-background: #FFFFFF;
+    --color-text: #111111;
+    --color-text-light: #555555;
+    --color-accent: #000000;
+    --color-border: #EAEAEA;
+    --color-card-bg: #F5F5F5;
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- Animated Background --- */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Place it behind all other content */
+    background-color: #fdfdfd;
+}
+
+/* --- Layout --- */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container-fluid {
+    width: 100%;
+    /* Add the left and right padding you want for the full-width section */
+    padding: 0 80px; 
+}
+
+section {
+    padding: 80px 0;
+}
+
+h1, h2, h3 {
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+p {
+    color: var(--color-text-light);
+}
+
+/* --- Header & Navigation --- */
+.site-header {
+    padding: 20px 0;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-text-light);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-text);
+}
+
+.nav-cta {
+    background-color: var(--color-accent);
+    color: var(--color-background) !important;
+    padding: 8px 16px;
+    border-radius: 5px;
+}
+
+/* --- Hero Section --- */
+.hero {
+    padding: 80px 0; /* Increased padding for better spacing */
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 60px; /* Space between the columns */
+    align-items: center; /* Vertically aligns content in both columns */
+}
+
+.hero-left h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero-left .subtitle {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+/* Adjusts the form to be left-aligned */
+.waitlist-form {
+    display: flex;
+    justify-content: flex-start; /* Aligns form to the left */
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.waitlist-form input {
+    width: 300px;
+    padding: 12px 15px;
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: var(--font-primary);
+}
+
+.waitlist-form button {
+    padding: 12px 25px;
+    border: none;
+    background-color: var(--color-accent);
+    color: var(--color-background);
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.waitlist-form button:hover {
+    background-color: #333;
+}
+
+.form-note {
+    font-size: 14px;
+    color: #888;
+}
+
+/* --- Form Messages & Success State --- */
+.form-message {
+    margin-top: 10px;
+    font-size: 14px;
+    min-height: 20px; /* Prevents layout shift when message appears */
+}
+
+.form-message.error {
+    color: #c0392b; /* A standard error red color */
+}
+
+.form-success-message {
+    padding: 20px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.form-success-message h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+/* Styling for the new image placeholder */
+.image-placeholder {
+    width: 100%;
+    height: 100%; /* Adjust height as needed */
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #AAA;
+}
+
+/* --- Video Placeholder --- */
+.video-placeholder {
+    background-color: #EBEBEB;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* --- Video Section --- */
+.video {
+    width: 100%;
+    line-height: 0; 
+    overflow: hidden;
+}
+
+.video video {
+    object-fit: cover;
+    width: 100%;
+    height: auto; 
+    vertical-align: middle;
+}
+
+/* --- Features Section --- */
+.features-grid {
+    display: grid;
+    /* Create two columns. The right column (1.5fr) will be 50% wider than the left (1fr). */
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px; /* Adjust the space between the columns */
+    align-items: start; /* Aligns items to the top of their respective grid cells */
+}
+
+.features-left h2 {
+    font-size: 36px;
+    text-align: left;
+    margin: 0; /* Remove old margin */
+    position: sticky; /* Optional: Makes the heading stick as you scroll past the feature list */
+    top: 40px; /* Optional: Adds some space from the top when sticky */
+}
+
+.feature-item {
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.feature-item:last-child {
+    margin-bottom: 0;
+}
+
+.feature-item h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* --- CTA Section --- */
+.cta-section {
+    text-align: center;
+    background-color: #F9F9F9;
+}
+
+.cta-section .waitlist-form {
+    justify-content: center;
+}
+
+.cta-section .container {
+    max-width: 700px;
+}
+
+.cta-section p {
+    margin-bottom: 30px;
+}
+
+/* --- Why Mindstax Section --- */
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+}
+
+/* This class styles ONLY the circular background */
+.why-icon {
+    width: 64px;
+    height: 64px;
+    background-color: #EBEBEB;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* This class styles ONLY the SVG icon itself */
+.icon-svg {
+    width: 32px; /* Controls icon size */
+    height: 32px; /* Controls icon size */
+    stroke: #555; /* Controls icon color */
+    stroke-width: 2; /* Controls icon line thickness */
+}
+
+.why-item h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* --- Use Cases Section --- */
+.use-case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.use-case-item {
+    background-color: var(--color-card-bg);
+    padding: 30px;
+    border-radius: 16px;
+}
+
+.use-case-item h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* --- FAQ Section --- */
+.faq .container {
+    max-width: 800px;
+}
+
+.faq-item {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.faq-item summary {
+    padding: 20px 0;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    content: '+';
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.faq-item details[open] summary::after {
+    content: '−';
+}
+
+.faq-item p {
+    padding-bottom: 20px;
+    max-width: 95%;
+}
+
+/* --- Footer --- */
+.site-footer-bottom {
+    background-color: #F9F9F9;
+    padding: 60px 0;
+    font-size: 14px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.footer-column h4 {
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column a {
+    text-decoration: none;
+    color: var(--color-text-light);
+}
+
+.footer-column a:hover {
+    color: var(--color-text);
+}
+
+.footer-bottom-text {
+    text-align: center;
+    padding-top: 40px;
+    border-top: 1px solid var(--color-border);
+    color: #999;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    h1 { font-size: 36px; }
+    h2 { font-size: 28px; }
+
+    .container-fluid {
+    padding: 0 20px; /* Match the standard container padding on mobile */
+    }
+
+    .nav-links { display: none; } /* Simple hiding for mobile, can be replaced with a hamburger menu */
+    
+    .waitlist-form {
+        flex-direction: column;
+        align-items: center;
+    }
+    .waitlist-form input {
+        width: 100%;
+        max-width: 400px;
+    }
+    .waitlist-form button {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .why-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .features-grid {
+    grid-template-columns: 1fr; /* Stack to a single column on mobile */
+    gap: 40px;
+    }
+
+    .features-left h2 {
+        position: static; /* Disable the sticky behavior on mobile */
+    }
+}
