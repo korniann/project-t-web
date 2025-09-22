@@ -129,12 +129,14 @@ p {
 }
 
 .hero-left h1 {
-    font-size: 48px;
+    /* font-size: 48px;  <-- DELETE THIS LINE */
+    font-size: clamp(2.25rem, 1.5rem + 3.5vw, 3rem); /* <-- ADD THIS LINE */
     margin-bottom: 20px;
 }
 
 .hero-left .subtitle {
-    font-size: 18px;
+    /* font-size: 18px; <-- DELETE THIS LINE */
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem); /* <-- ADD THIS LINE */
     margin-bottom: 30px;
 }
 
@@ -209,6 +211,12 @@ p {
     align-items: center;
     justify-content: center;
     color: #AAA;
+}
+
+.image-placeholder img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Good practice to remove extra space below the image */
 }
 
 /* --- Video Placeholder --- */
