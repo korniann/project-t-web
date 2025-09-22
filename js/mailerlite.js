@@ -18,7 +18,7 @@ const handleFormSubmit = (formId) => {
         try {
             // --- THIS IS THE KEY CHANGE ---
             // We now send the data to OUR function, not MailerLite
-            const response = await fetch('/.netlify/functions/subscribe', {
+            const response = await fetch('/api/subscribe', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: email }),
