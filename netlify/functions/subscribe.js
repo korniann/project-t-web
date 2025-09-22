@@ -2,6 +2,17 @@ exports.handler = async function(event, context) {
     console.log('Function invoked');
     console.log('Request method:', event.httpMethod);
 
+    if (event.httpMethod === 'OPTIONS') {
+        return {
+            statusCode: 200, // Preflight SUCCESS
+            headers: {
+                'Access-Control-Allow-Origin': '*', // Or 'https://mindstax.com' for more security
+                'Access-Control-Allow-Methods': 'POST, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type',
+            },
+        };
+    }
+
     // We only care about POST requests
     if (event.httpMethod !== 'POST') {
         return { statusCode: 405, body: 'Method Not Allowed' };
