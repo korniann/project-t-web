@@ -1,8 +1,7 @@
 # This file provides explicit instructions for Netlify
 
 [build]
-  # This tells Netlify where your website files are. 
-  # "." means the current directory.
+  # This tells Netlify where your website files are.
   publish = "."
   
   # This tells Netlify where your serverless functions are located.
@@ -12,3 +11,14 @@
   # This mirrors the build settings for the local 'netlify dev' command
   publish = "."
   functions = "netlify/functions"
+
+# --- ADD THIS HEADERS RULE ---
+# This rule tells Netlify's CDN to add the correct CORS headers
+# to any OPTIONS or POST request going to your function's path.
+# This is what will fix the 405 error.
+[[headers]]
+  for = "/.netlify/functions/subscribe"
+  [headers.values]
+    Access-Control-Allow-Origin = "*" # Or "https://mindstax.com" for more security
+    Access-Control-Allow-Methods = "POST, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type"
