@@ -1,17 +1,15 @@
 exports.handler = async function(event, context) {
-    console.log('Function invoked');
-    console.log('Request method:', event.httpMethod);
-
-    if (event.httpMethod === 'OPTIONS') {
-        return {
-            statusCode: 200, // Preflight SUCCESS
-            headers: {
-                'Access-Control-Allow-Origin': '*', // Or 'https://mindstax.com' for more security
-                'Access-Control-Allow-Methods': 'POST, OPTIONS',
-                'Access-Control-Allow-Headers': 'Content-Type',
-            },
-        };
-    }
+    // --- TEMPORARY DEBUGGING CODE ---
+    // This will return the HTTP method that Netlify is sending to the function.
+    return {
+        statusCode: 200,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            message: "This is a debug response.",
+            httpMethodReceived: event.httpMethod
+        })
+    };
+    // --- END DEBUGGING CODE ---
 
     // We only care about POST requests
     if (event.httpMethod !== 'POST') {
