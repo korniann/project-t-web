@@ -433,6 +433,22 @@ p {
     }
 
     .nav-links { display: none; } /* Simple hiding for mobile, can be replaced with a hamburger menu */
+
+    .hero {
+    padding: 40px 0; /* Reduces the large top/bottom padding on mobile */
+    text-align: center; /* Centers the heading and text for a cleaner mobile look */
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr; /* This is the key: stacks the grid into a single column */
+        gap: 40px; /* Adjusts the space between the stacked items */
+    }
+
+    .hero-left .subtitle {
+        max-width: 450px; /* Prevents the subtitle from looking too wide on tablets */
+        margin-left: auto;
+        margin-right: auto;
+    }
     
     .waitlist-form {
         flex-direction: column;
