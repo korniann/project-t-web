@@ -1,6 +1,6 @@
 [build]
-  # This tells Netlify that your website is in the "public" folder.
-  publish = "public"
+  # This tells Netlify that your website is in the "docs" folder.
+  publish = "docs"
   
   # This path is relative to the root, so it's still correct.
   functions = "netlify/functions"
