@@ -22,3 +22,4 @@
   to = "/.netlify/functions/subscribe"
   # The 200 status makes this a "rewrite," preserving the POST method
   status = 200
+  force = true
