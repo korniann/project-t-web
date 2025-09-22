@@ -12,14 +12,3 @@
   # This mirrors the build settings for the local 'netlify dev' command
   publish = "."
   functions = "netlify/functions"
-
-# This rule ensures that POST requests to your function's endpoint
-# are correctly routed to the function itself.
-[[redirects]]
-  # The "clean" URL you will use in your JavaScript
-  from = "/api/subscribe"
-  # The actual function to execute
-  to = "/.netlify/functions/subscribe"
-  # The 200 status makes this a "rewrite," preserving the POST method
-  status = 200
-  force = true
