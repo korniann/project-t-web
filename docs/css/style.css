@@ -433,7 +433,7 @@ p {
 
 /* --- Responsive Design --- */
 @media (max-width: 768px) {
-    h1 { font-size: 36px; }
+    
     h2 { font-size: 28px; }
 
     .container-fluid {
