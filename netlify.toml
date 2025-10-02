@@ -5,5 +5,10 @@
   # This path is relative to the root, so it's still correct.
   functions = "netlify/functions"
 
+  [[redirects]]
+  from = "/app/*"
+  to = "https://mindstax.netlify.app/:splat"
+  status = 200
+
 # We are removing the headers and dev sections for simplicity to solve this.
 # They are not needed for the fix.
