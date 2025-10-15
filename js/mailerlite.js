@@ -18,7 +18,7 @@ const handleFormSubmit = (formId) => {
         try {
             // --- THIS IS THE KEY CHANGE ---
             // We now send the data to OUR function, not MailerLite
-            const response = await fetch('/.netlify/functions/subscribe', {
+            const response = await fetch('https://mindstax.com/api/subscribe', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: email }),
@@ -35,7 +35,7 @@ const handleFormSubmit = (formId) => {
             formParent.innerHTML = `
                 <div class="form-success-message">
                     <h3>You're almost there!</h3>
-                    <p>Please check your inbox for a confirmation email and click the link inside to activate your subscription.</p>
+                    <p>Please check your inbox ( and SPAM folders!) for a confirmation email and click the link inside to activate your subscription.</p>
                 </div>
             `;
 
